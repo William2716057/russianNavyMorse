@@ -48,4 +48,18 @@ def location_identifiers(s):
     else:
         print("Identifiers not found")
 location_identifiers(translation)
-print(locations)
+#print(locations)
+
+def transform(locations):
+    transformed = []
+    for loc in locations:
+        if loc.startswith("99"):
+            loc = "Lon: " + loc[2:]  # Remove "99"
+        if loc.startswith("10"):
+            loc = "Lat: Q" + loc[2:]  # Replace "10" with "Q"
+        #loc = loc[:1] + "." + loc[1:]  # Add decimal after index 1
+        transformed.append(loc)
+    return ", ".join(transformed)
+
+result = transform(locations)
+print(result)  # Output: 34.5, Q346
