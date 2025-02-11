@@ -50,16 +50,19 @@ def location_identifiers(s):
 location_identifiers(translation)
 #print(locations)
 
+#unnecessary function, remove later
 def transform(locations):
     transformed = []
     for loc in locations:
         if loc.startswith("99"):
-            loc = "Lon: " + loc[2:]  # Remove "99"
-        if loc.startswith("10"):
-            loc = "Lat: Q" + loc[2:]  # Replace "10" with "Q"
-        #loc = loc[:1] + "." + loc[1:]  # Add decimal after index 1
+            loc = "Lon: " + loc[2:]  # Remove "99" and add lon
+            loc = loc[:6] + "." + loc[6:]  # Add decimal after index 1
+        elif loc.startswith("10"): #1 = E can also be 
+            loc = "Lat: Q" + loc[2:]  # return Q103,46, do not replace 
+            loc = loc[:7] + "." + loc[7:] if len(loc) > 7 else loc  # Add decimal in correct position
         transformed.append(loc)
     return ", ".join(transformed)
 
 result = transform(locations)
-print(result)  # Output: 34.5, Q346
+print(result) 
+
