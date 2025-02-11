@@ -1,3 +1,5 @@
+import re
+
 morseDict = {
     '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J',
     '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',
@@ -20,9 +22,28 @@ def english_morse(morse_code):
     
 if __name__ == "__main__":
     morse_code = input("Enter Navy Code: ")
-    #check for valid before translating
-    #
     translation = english_morse(morse_code)
-    #else
-    #print("invalid or unrecognised identifier")
     print("Original:", translation)
+    #check for validation before processing
+    #if not
+    #VVV
+    #RBEG
+    #RGR70
+    #RAL2
+    #RMDV
+    #RDNK 
+    #RCV
+    #RMI93
+    #print sections
+
+def location_identifiers(s):
+    chunks = s.split()
+    first = next((num for num in chunks if num.startswith('99')), None)
+    second = next((num for num in chunks if num.startswith('10')), None)
+                  
+    if first and second:
+        print(f"Location identifiers: {first}, {second}")
+    else:
+        print("Identifiers not found")
+        
+location_identifiers(translation)
