@@ -35,15 +35,17 @@ if __name__ == "__main__":
     #RCV
     #RMI93
     #print sections
-
+    locations = []
 def location_identifiers(s):
     chunks = s.split()
     first = next((num for num in chunks if num.startswith('99')), None)
     second = next((num for num in chunks if num.startswith('10')), None)
                   
     if first and second:
+        locations.append(first)
+        locations.append(second)
         print(f"Location identifiers: {first}, {second}")
     else:
         print("Identifiers not found")
-        
 location_identifiers(translation)
+print(locations)
