@@ -20,5 +20,9 @@ def english_morse(morse_code):
     
 if __name__ == "__main__":
     morse_code = input("Enter Navy Code: ")
+    #check for valid before translating
+    #
     translation = english_morse(morse_code)
+    #else
+    #print("invalid or unrecognised identifier")
     print("Original:", translation)
