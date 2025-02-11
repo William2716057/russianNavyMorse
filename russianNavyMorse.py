@@ -21,4 +21,4 @@ def english_morse(morse_code):
 if __name__ == "__main__":
     morse_code = input("Enter Navy Code: ")
     translation = english_morse(morse_code)
-    print("Translated Text:", translation)
+    print("Original:", translation)
