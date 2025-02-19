@@ -48,7 +48,7 @@ def location_identifiers(s):
     else:
         print("Identifiers not found")
 location_identifiers(translation)
-#print(locations)
+print(locations)
 
 #unnecessary function, remove later
 def transform(locations):
@@ -58,7 +58,7 @@ def transform(locations):
             loc = "Lon: " + loc[2:]  # Remove "99" and add lon
             loc = loc[:6] + "." + loc[6:]  # Add decimal after index 1
         elif loc.startswith("10"): #1 = E can also be 
-            loc = "Lat: Q" + loc[2:]  # return Q103,46, do not replace 
+            loc = "Lat:Q" + loc[2:]  # return Q103,46, do not replace 
             loc = loc[:7] + "." + loc[7:] if len(loc) > 7 else loc  # Add decimal in correct position
         transformed.append(loc)
     return ", ".join(transformed)
@@ -66,3 +66,14 @@ def transform(locations):
 result = transform(locations)
 print(result) 
 
+def find_section(input_string):
+    match = re.search(r'\b222\d{2}\b', input_string)
+    if match:
+        print(f"Speed: {match.group()}")
+    else:
+        print("Section 222 not found")
+
+find_section(translation)
+
+# Example usage
+#decode_location(locations)
