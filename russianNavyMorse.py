@@ -69,6 +69,12 @@ def transform(locations):
 
 result = transform(locations)
 print(result) 
+print(locations[1][2])
+
+            # if 1 print (north of equator and east of Greeich Meridian), 
+            # if 7 print(north of equator and west of Greenwich Meridian)
+            # if 3 print (south of equator and east of Greenwich meridian)
+            # if 5 print (south of equator and west of Greenwich meridian)
 
 def find_section(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
