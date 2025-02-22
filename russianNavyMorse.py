@@ -55,7 +55,7 @@ def transform(locations):
     transformed = []
     for loc in locations:
         if loc.startswith("99"):
-            loc = "Lon: " + loc[2:]  # Remove "99" and add lon
+            loc = "Lon: " + loc[2:]  # degrees north or south of equater 
             loc = loc[:6] + "." + loc[6:]  # Add decimal after index 1
         elif loc.startswith("10"): #1 = E can also be 
             loc = "Lat:Q" + loc[2:]  # return Q103,46, do not replace 
