@@ -78,7 +78,7 @@ elif value == '5':
 else:
     print("Unrecognized or invalid value")
 
-def find_section(input_string):
+def direction_speed(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
     if match:
         direction = match.group()
@@ -105,5 +105,29 @@ def find_section(input_string):
             print("unknown")
     else:
         print("Section 222 not found")
+        
+    if match:
+        direction = match.group() 
+        # Extract the 5th character (index 4)
+        if direction[4] == '1':
+            print("0 knot")
+        elif direction[4] == '2':
+            print("1 to 5 knots")
+        elif direction[4] == '3':
+            print("6 to 10 knots")
+        elif direction[4] == '4':
+            print("16 to 20 knots")
+        elif direction[4] == '5':
+            print("21 to 25 knots")
+        elif direction[4] == '6':
+            print("26 to 30 knots")
+        elif direction[4] == '7':
+            print("31 to 35 knots")
+        elif direction[4] == '8':
+            print("36 to 40 knots")
+        elif direction[4] == '9':
+            print("Over 40 knots")
+    else:
+        print("Unfound or invalid")
 
-find_section(translation)
+direction_speed(translation)
