@@ -69,12 +69,25 @@ def transform(locations):
 
 result = transform(locations)
 print(result) 
-print(locations[1][2])
+#print(locations[1][2])
 
             # if 1 print (north of equator and east of Greeich Meridian), 
             # if 7 print(north of equator and west of Greenwich Meridian)
             # if 3 print (south of equator and east of Greenwich meridian)
             # if 5 print (south of equator and west of Greenwich meridian)
+            # else print (unrecognised or invalid value)
+value = locations[1][2]  # Extract index 2 of the second value
+
+if value == '1':
+    print("North of the equator and east of the Greenwich Meridian")
+elif value == '7':
+    print("North of the equator and west of the Greenwich Meridian")
+elif value == '3':
+    print("South of the equator and east of the Greenwich Meridian")
+elif value == '5':
+    print("South of the equator and west of the Greenwich Meridian")
+else:
+    print("Unrecognized or invalid value")
 
 def find_section(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
