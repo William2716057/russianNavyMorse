@@ -59,23 +59,12 @@ def transform(locations):
             loc = loc[:6] + "." + loc[6:]  # Add decimal after index 1
         elif loc.startswith("10"): #1 = E can also be 
             loc = "Lat:Q" + loc[2:]  
-            # if 1 print (north of equator and east of Greeich Meridian), 
-            # if 7 print(north of equator and west of Greenwich Meridian)
-            # if 3 print (south of equator and east of Greenwich meridian)
-            # if 5 print (south of equator and west of Greenwich meridian)
             loc = loc[:7] + "." + loc[7:] if len(loc) > 7 else loc  # Add decimal in correct position
         transformed.append(loc)
     return ", ".join(transformed)
 
 result = transform(locations)
 print(result) 
-#print(locations[1][2])
-
-            # if 1 print (north of equator and east of Greeich Meridian), 
-            # if 7 print(north of equator and west of Greenwich Meridian)
-            # if 3 print (south of equator and east of Greenwich meridian)
-            # if 5 print (south of equator and west of Greenwich meridian)
-            # else print (unrecognised or invalid value)
 value = locations[1][2]  # Extract index 2 of the second value
 
 if value == '1':
@@ -89,14 +78,19 @@ elif value == '5':
 else:
     print("Unrecognized or invalid value")
 
-def find_section(input_string):
+def direction(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
     if match:
-        print(f"Speed: {match.group()}")
+        print(f"Direction: {match.group()}")
+        #if index[3] == 3
+        #print(Travelling southeast)
     else:
         print("Section 222 not found")
 
-find_section(translation)
+direction(translation)
+
+
+
 
 # Example usage
 #decode_location(locations)
