@@ -58,7 +58,11 @@ def transform(locations):
             loc = "Lon: " + loc[2:]  # degrees north or south of equater 
             loc = loc[:6] + "." + loc[6:]  # Add decimal after index 1
         elif loc.startswith("10"): #1 = E can also be 
-            loc = "Lat:Q" + loc[2:]  # return Q103,46, do not replace 
+            loc = "Lat:Q" + loc[2:]  
+            # if 1 print (north of equator and east of Greeich Meridian), 
+            # if 7 print(north of equator and west of Greenwich Meridian)
+            # if 3 print (south of equator and east of Greenwich meridian)
+            # if 5 print (south of equator and west of Greenwich meridian)
             loc = loc[:7] + "." + loc[7:] if len(loc) > 7 else loc  # Add decimal in correct position
         transformed.append(loc)
     return ", ".join(transformed)
