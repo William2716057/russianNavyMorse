@@ -78,19 +78,32 @@ elif value == '5':
 else:
     print("Unrecognized or invalid value")
 
-def direction(input_string):
+def find_section(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
     if match:
-        print(f"Direction: {match.group()}")
-        #if index[3] == 3
-        #print(Travelling southeast)
+        direction = match.group()
+        print(f"Direction: {direction}")
+        
+        # Extract the 4th character (index 3)
+        if direction[3] == '1':
+            print("Travelling northeast")
+        elif direction[3] == '2':
+            print("Travelling east")
+        elif direction[3] == '3':
+            print("Travelling southeast")
+        elif direction[3] == '4':
+            print("Travelling south")
+        elif direction[3] == '5':
+            print("Travelling southwest")
+        elif direction[3] == '6':
+            print("Travelling west")
+        elif direction[3] == '7':
+            print("Travelling northwest")
+        elif direction[3] == '8':
+            print("Travelling north")
+        elif direction[3] == '9':
+            print("unknown")
     else:
         print("Section 222 not found")
 
-direction(translation)
-
-
-
-
-# Example usage
-#decode_location(locations)
+find_section(translation)
