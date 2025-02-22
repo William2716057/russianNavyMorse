@@ -48,7 +48,7 @@ def location_identifiers(s):
     else:
         print("Identifiers not found")
 location_identifiers(translation)
-print(locations)
+#print(locations)
 
 #unnecessary function, remove later
 def transform(locations):
