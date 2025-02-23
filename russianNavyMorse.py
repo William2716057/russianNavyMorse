@@ -138,32 +138,34 @@ direction_speed(translation)
 #if 4 followed by 3
 #print(precipitation data ommitted or unavailable)
 
-def preciptation(input_string):
-    match = re.search(r'\b41\d{0}\b', input_string)
+def precipitation(input_string):
+    match = re.search(r'\b41\d{3}\b', input_string)
     if match:
         precipitation = match.group()
         print(f"Precipitation chunck: {precipitation}")
         
         # Extract the 4th character (index 3)
-        if precipitation[1] == '2':
+        if precipitation[2] == '2':
             print("0 to 50")
-        elif precipitation[3] == '1':
+        elif precipitation[2] == '1':
             print("50 to 100")
-        elif precipitation[3] == '2':
+        elif precipitation[2] == '2':
             print("100 to 200")
-        elif precipitation[3] == '3':
+        elif precipitation[2] == '3':
             print("200 to 300")
-        elif precipitation[3] == '4':
+        elif precipitation[2] == '4':
             print("300 to 600")
-        elif precipitation[3] == '5':
+        elif precipitation[2] == '5':
             print("600 to 1000")
-        elif precipitation[3] == '6':
+        elif precipitation[2] == '6':
             print("1000 to 1500 ")
-        elif precipitation[3] == '7':
+        elif precipitation[2] == '7':
             print("1500 to 2000")
-        elif precipitation[3] == '8':
+        elif precipitation[2] == '8':
             print("2000 to 2500")
-        elif precipitation[3] == '9':
+        elif precipitation[2] == '9':
             print("2500 or more, or no clouds")
     else:
         print("Section 41 not found")
+        
+precipitation(translation)
