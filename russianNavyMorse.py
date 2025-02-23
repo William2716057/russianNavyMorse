@@ -142,7 +142,7 @@ def precipitation(input_string):
     match = re.search(r'\b41\d{3}\b', input_string)
     if match:
         height = match.group()
-        print(f"Precipitation and cloud height chunck: {height}")
+        print(f"Precipitation and cloud height chunk: {height}")
         
         # Extract the 4th character (index 3)
         if height[2] == '2':
