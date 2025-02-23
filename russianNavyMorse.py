@@ -144,7 +144,6 @@ def precipitation(input_string):
         height = match.group()
         print(f"Precipitation and cloud height chunk: {height}")
         
-        # Extract the 4th character (index 3)
         if height[2] == '2':
             print("0 to 50")
         elif height[2] == '1':
