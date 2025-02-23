@@ -141,29 +141,29 @@ direction_speed(translation)
 def precipitation(input_string):
     match = re.search(r'\b41\d{3}\b', input_string)
     if match:
-        precipitation = match.group()
-        print(f"Precipitation chunck: {precipitation}")
+        height = match.group()
+        print(f"Precipitation and cloud height chunck: {height}")
         
         # Extract the 4th character (index 3)
-        if precipitation[2] == '2':
+        if height[2] == '2':
             print("0 to 50")
-        elif precipitation[2] == '1':
+        elif height[2] == '1':
             print("50 to 100")
-        elif precipitation[2] == '2':
+        elif height[2] == '2':
             print("100 to 200")
-        elif precipitation[2] == '3':
+        elif height[2] == '3':
             print("200 to 300")
-        elif precipitation[2] == '4':
+        elif height[2] == '4':
             print("300 to 600")
-        elif precipitation[2] == '5':
+        elif height[2] == '5':
             print("600 to 1000")
-        elif precipitation[2] == '6':
+        elif height[2] == '6':
             print("1000 to 1500 ")
-        elif precipitation[2] == '7':
+        elif height[2] == '7':
             print("1500 to 2000")
-        elif precipitation[2] == '8':
+        elif height[2] == '8':
             print("2000 to 2500")
-        elif precipitation[2] == '9':
+        elif height[2] == '9':
             print("2500 or more, or no clouds")
     else:
         print("Section 41 not found")
