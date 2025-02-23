@@ -167,7 +167,7 @@ def precipitation(input_string):
     else:
         print("Invalid or unfound")
         
-
+        #fix here
         visibility_digits = height_visibility[-2:]    
         
         if visibility_digits == '90':
