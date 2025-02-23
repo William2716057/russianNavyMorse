@@ -48,7 +48,6 @@ def location_identifiers(s):
     else:
         print("Identifiers not found")
 location_identifiers(translation)
-#print(locations)
 
 #unnecessary function, remove later
 def transform(locations):
@@ -82,7 +81,7 @@ def direction_speed(input_string):
     match = re.search(r'\b222\d{2}\b', input_string)
     if match:
         direction = match.group()
-        print(f"Direction: {direction}")
+        print(f"Direction chunk: {direction}")
         
         # Extract the 4th character (index 3)
         if direction[3] == '1':
@@ -131,3 +130,40 @@ def direction_speed(input_string):
         print("Unfound or invalid")
 
 direction_speed(translation)
+
+#precipitation data indicator irixhVV
+#always encoded as 4
+#find 4 
+#if 4 followed by 1
+#if 4 followed by 3
+#print(precipitation data ommitted or unavailable)
+
+def preciptation(input_string):
+    match = re.search(r'\b41\d{0}\b', input_string)
+    if match:
+        precipitation = match.group()
+        print(f"Precipitation chunck: {precipitation}")
+        
+        # Extract the 4th character (index 3)
+        if precipitation[1] == '2':
+            print("0 to 50")
+        elif precipitation[3] == '1':
+            print("50 to 100")
+        elif precipitation[3] == '2':
+            print("100 to 200")
+        elif precipitation[3] == '3':
+            print("200 to 300")
+        elif precipitation[3] == '4':
+            print("300 to 600")
+        elif precipitation[3] == '5':
+            print("600 to 1000")
+        elif precipitation[3] == '6':
+            print("1000 to 1500 ")
+        elif precipitation[3] == '7':
+            print("1500 to 2000")
+        elif precipitation[3] == '8':
+            print("2000 to 2500")
+        elif precipitation[3] == '9':
+            print("2500 or more, or no clouds")
+    else:
+        print("Section 41 not found")
