@@ -144,7 +144,7 @@ def precipitation(input_string):
         height_visibility = match.group()
         print(f"Precipitation and cloud height chunk: {height_visibility}")
         
-        if height_visibility[2] == '2':
+        if height_visibility[2] == '0':
             print("0 to 50")
         elif height_visibility[2] == '1':
             print("50 to 100")
@@ -165,6 +165,32 @@ def precipitation(input_string):
         elif height_visibility[2] == '9':
             print("2500 or more, or no clouds")
     else:
-        print("Section 41 not found")
+        print("Invalid or unfound")
+        
+
+        visibility_digits = height_visibility[-2:]    
+        
+        if visibility_digits == '90':
+            print("")
+        elif visibility_digits == '91':
+            print("50 to 100")
+        elif visibility_digits == '92':
+            print("100 to 200")
+        elif visibility_digits == '93':
+            print("200 to 300")
+        elif visibility_digits == '94':
+            print("300 to 600")
+        elif visibility_digits == '95':
+            print("600 to 1000")
+        elif visibility_digits == '96':
+            print("1000 to 1500 ")
+        elif visibility_digits == '97':
+            print("1500 to 2000")
+        elif visibility_digits == '98':
+            print("2000 to 2500")
+        elif visibility_digits == '99':
+            print("50 km or more")
+        else:
+            print("not found")
         
 precipitation(translation)
