@@ -49,6 +49,16 @@ def location_identifiers(s):
         print("Identifiers not found")
 location_identifiers(translation)
 
+#time chunk
+def time_identifier(input_string):
+    chunk = translation[13] + translation[14] + translation[15] + translation[16]
+    day = translation[13] + translation[14]
+    hour = translation[15] + translation[16]
+    print("datetime identifiers: " + chunk)
+    print("day of month: " + day)
+    print("hour: " + hour + ":00")
+
+time_identifier(translation)
 #unnecessary function, remove later
 def transform(locations):
     transformed = []
@@ -194,3 +204,5 @@ def precipitation(input_string):
             print("not found")
         
 precipitation(translation)
+
+#
