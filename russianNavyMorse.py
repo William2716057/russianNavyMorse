@@ -238,7 +238,7 @@ def visibility(input_string): #VV
 visibility(translation)
 
 #Total Cloud Cover 
-#32405 index()
+#32405 
 def total_cloud_cover(input_string):  # N
     # capture exactly ONE digit at index 7
     match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
@@ -276,3 +276,96 @@ def total_cloud_cover(input_string):  # N
         print("not found")
 
 total_cloud_cover(translation)
+
+#wind direction 32405
+#True direction in tends of degrees from which wind is blowing averaged over a period of ten minutes
+def wind_direction(input_string):  # dd
+    
+    match = re.search(r'\b41\d{3}\s+[0-9](\d{2})\d{2}\b', input_string)
+
+    print("Wind Direction: 32405")
+
+    if not match:
+        print("digit not found")
+        return
+
+    wind_digit = match.group(1)
+
+    if wind_digit == '00':
+        print("Calm")
+    elif wind_digit == '01':
+        print("5 to 14")
+    elif wind_digit == '02':
+        print("15 to 24")
+    elif wind_digit == '03':
+        print("25 to 34")
+    elif wind_digit == '04':
+        print("35 to 44")
+    elif wind_digit == '05':
+        print("45 to 54")
+    elif wind_digit == '06':
+        print("55 to 64")
+    elif wind_digit == '07':
+        print("65 to 74")
+    elif wind_digit == '08':
+        print("75 to 84")
+    elif wind_digit == '09':
+        print("85 to 94")
+    elif wind_digit == '10':
+        print("95 to 104")
+    elif wind_digit == '11':
+        print("105 to 114")
+    elif wind_digit == '12':
+        print("115 to 124")
+    elif wind_digit == '13':
+        print("125 to 134")
+    elif wind_digit == '14':
+        print("135 to 144")
+    elif wind_digit == '15':
+        print("145 to 154")
+    elif wind_digit == '16':
+        print("155 to 164")
+    elif wind_digit == '17':
+        print("165 to 174")
+    elif wind_digit == '18':
+        print("175 to 184")
+    elif wind_digit == '19':
+        print("185 to 194")
+    elif wind_digit == '20':
+        print("195 to 204")
+    elif wind_digit == '21':
+        print("205 to 214")
+    elif wind_digit == '22':
+        print("215 to 224")
+    elif wind_digit == '23':
+        print("225 to 234")
+    elif wind_digit == '24':
+        print("235 to 244")
+    elif wind_digit == '25':
+        print("245 to 254")
+    elif wind_digit == '26':
+        print("255 to 264")
+    elif wind_digit == '27':
+        print("265 to 274")
+    elif wind_digit == '28':
+        print("275 to 284")
+    elif wind_digit == '29':
+        print("285 to 294")
+    elif wind_digit == '30':
+        print("295 to 304")
+    elif wind_digit == '31':
+        print("305 to 314")
+    elif wind_digit == '32':
+        print("315 to 324")
+    elif wind_digit == '33':
+        print("325 to 334")
+    elif wind_digit == '34':
+        print("335 to 344")
+    elif wind_digit == '35':
+        print("345 to 354")
+    elif wind_digit == '36':
+        print("355 to 364")
+    else:
+        print("not found")
+
+wind_direction(translation)
