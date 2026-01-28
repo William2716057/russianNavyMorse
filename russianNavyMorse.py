@@ -59,6 +59,28 @@ def time_identifier(input_string):
     print("hour: " + hour + ":00")
 
 time_identifier(translation)
+
+#wind speed
+def wind_speed(input_string): #fix
+    chunk = translation[17]
+    print("Wind speed identifier: " + chunk)
+    if translation[17] == '0':
+        print("fix here")
+    elif translation[17] =='1':
+        print("")
+    elif translation[17] =='2':
+        print("")
+    elif translation[17] =='3':
+        print("")
+    elif translation[17] =='4':
+        print("")
+    else:
+        print("Invalid or unfound")
+
+wind_speed(translation)
+
+    
+
 #unnecessary function, remove later
 def transform(locations):
     transformed = []
@@ -148,61 +170,72 @@ direction_speed(translation)
 #if 4 followed by 3
 #print(precipitation data ommitted or unavailable)
 
-def precipitation(input_string):
+def cloud_height(input_string):
+    
     match = re.search(r'\b41\d{3}\b', input_string)
     if match:
         height_visibility = match.group()
-        print(f"Precipitation and cloud height chunk: {height_visibility}")
+        print(f"Cloud height chunk: {height_visibility}")
         
         if height_visibility[2] == '0':
-            print("0 to 50")
+            print("0 to 50 meters")
         elif height_visibility[2] == '1':
-            print("50 to 100")
+            print("50 to 100 meters")
         elif height_visibility[2] == '2':
-            print("100 to 200")
+            print("100 to 200 meters")
         elif height_visibility[2] == '3':
-            print("200 to 300")
+            print("200 to 300 meters")
         elif height_visibility[2] == '4':
-            print("300 to 600")
+            print("300 to 600 meters")
         elif height_visibility[2] == '5':
-            print("600 to 1000")
+            print("600 to 1000 meters")
         elif height_visibility[2] == '6':
-            print("1000 to 1500 ")
+            print("1000 to 1500 meters")
         elif height_visibility[2] == '7':
-            print("1500 to 2000")
+            print("1500 to 2000 meters")
         elif height_visibility[2] == '8':
-            print("2000 to 2500")
+            print("2000 to 2500 meters")
         elif height_visibility[2] == '9':
             print("2500 or more, or no clouds")
     else:
         print("Invalid or unfound")
-        
-        #fix here
-        visibility_digits = height_visibility[-2:]    
-        
-        if visibility_digits == '90':
-            print("")
-        elif visibility_digits == '91':
-            print("50 to 100")
-        elif visibility_digits == '92':
-            print("100 to 200")
-        elif visibility_digits == '93':
-            print("200 to 300")
-        elif visibility_digits == '94':
-            print("300 to 600")
-        elif visibility_digits == '95':
-            print("600 to 1000")
-        elif visibility_digits == '96':
-            print("1000 to 1500 ")
-        elif visibility_digits == '97':
-            print("1500 to 2000")
-        elif visibility_digits == '98':
-            print("2000 to 2500")
-        elif visibility_digits == '99':
-            print("50 km or more")
-        else:
-            print("not found")
-        
-precipitation(translation)
 
-#
+cloud_height(translation)    
+
+def visibility(input_string): #VV
+    match = re.search(r'41\d(\d{2})', input_string)
+    print("visibility:")
+    if not match:
+        print("not found")
+        return
+    
+    visibility_digits = match.group(1)  # only capture last 2 digits
+    
+    if visibility_digits == '90':
+        print("Less than 50 meters")
+    elif visibility_digits == '91':
+        print("50 to 200 meters")
+    elif visibility_digits == '92':
+        print("200 to 500 meters")
+    elif visibility_digits == '93':
+        print("500 to 1000 meters")
+    elif visibility_digits == '94':
+        print("1 to 2 kilometers")
+    elif visibility_digits == '95':
+        print("2 to 4 kilometers")
+    elif visibility_digits == '96':
+        print("4 to 10 kilometers")
+    elif visibility_digits == '97':
+        print("10 to 20 kilometers")
+    elif visibility_digits == '98':
+        print("20 to 50 kilometers")
+    elif visibility_digits == '99':
+        print("more than 50 kilometers")
+    else:
+        print("not found")
+
+
+visibility(translation)
+
+#Total Cloud Cover 
+#32405
