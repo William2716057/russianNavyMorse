@@ -291,7 +291,7 @@ def wind_direction(input_string):  # dd
 
     wind_digit = match.group(1)
 
-    if wind_digit == '00':
+    if wind_digit == '00': #change to degrees
         print("Calm")
     elif wind_digit == '01':
         print("5 to 14")
@@ -365,6 +365,8 @@ def wind_direction(input_string):  # dd
         print("345 to 354")
     elif wind_digit == '36':
         print("355 to 364")
+    elif wind_digit == '99':
+        print("variable or all directions")
     else:
         print("not found")
 
