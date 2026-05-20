@@ -373,3 +373,43 @@ def wind_direction(input_string):  # dd
 
 wind_direction(translation)
 
+def air_temperature(input_string):  # N
+    # capture exactly ONE digit at index 7
+    match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
+    cloud_digit = match.group(1)
+  
+    print(f"Cloud Cover: {cloud_digit}")
+
+    if not match:
+        print("digit not found")
+        return
+
+    #cloud_digit = match.group(1)
+
+    if cloud_digit == '0':
+        print("Cloudless")
+    elif cloud_digit == '1':
+        print("1 eighth or less")
+    elif cloud_digit == '2':
+        print("2 eighths")
+    elif cloud_digit == '3':
+        print("3 eighths")
+    elif cloud_digit == '4':
+        print("4 eighths")
+    elif cloud_digit == '5':
+        print("5 eighths")
+    elif cloud_digit == '6':
+        print("6 eighths")
+    elif cloud_digit == '7':
+        print("7 eighths or more but not totally covered")
+    elif cloud_digit == '8':
+        print("8 eighths, sky completely covered by clouds")
+    elif cloud_digit == '9':
+        print("Sky obscured by fog, snow or other meteorological phenomena")
+    else:
+        print("not found")
+
+total_cloud_cover(translation)
+
+test = re.search(r'')
+print(test)
