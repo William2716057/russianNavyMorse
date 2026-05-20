@@ -204,12 +204,13 @@ cloud_height(translation)
 
 def visibility(input_string): #VV
     match = re.search(r'41\d(\d{2})', input_string)
-    print("visibility:")
+    visibility_digits = match.group(1)  # only capture last 2 digits
+    print(f"visibility chunk: {visibility_digits}")
     if not match:
         print("not found")
         return
     
-    visibility_digits = match.group(1)  # only capture last 2 digits
+    #visibility_digits = match.group(1)  # only capture last 2 digits
     
     if visibility_digits == '90':
         print("Less than 50 meters")
@@ -242,15 +243,15 @@ visibility(translation)
 def total_cloud_cover(input_string):  # N
     # capture exactly ONE digit at index 7
     match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
-
+    cloud_digit = match.group(1)
   
-    print("Cloud Cover: 32405")
+    print(f"Cloud Cover: {cloud_digit}")
 
     if not match:
         print("digit not found")
         return
 
-    cloud_digit = match.group(1)
+    #cloud_digit = match.group(1)
 
     if cloud_digit == '0':
         print("Cloudless")
@@ -282,14 +283,14 @@ total_cloud_cover(translation)
 def wind_direction(input_string):  # dd
     
     match = re.search(r'\b41\d{3}\s+[0-9](\d{2})\d{2}\b', input_string)
-
-    print("Wind Direction: 32405")
+    wind_digit = match.group(1)
+    print(f"Wind Direction chunk: {wind_digit}")
 
     if not match:
         print("digit not found")
         return
 
-    wind_digit = match.group(1)
+    #wind_digit = match.group(1)
 
     if wind_digit == '00': #change to degrees
         print("Calm")
@@ -371,3 +372,4 @@ def wind_direction(input_string):  # dd
         print("not found")
 
 wind_direction(translation)
+
