@@ -9,6 +9,8 @@ morseDict = {
     '...-..-': '$', '.--.-.': '@', '-.--.-': '(', '-.--.': ')', '.-...': '&', '-.-.-.': ';'
 }
 #RCV DE UCTA5 13181 99345 10346 41698 32405 10280 40120 54000 70200 83500 22252 00280 13012 BT AR UCTA5 N
+
+#edit the search functions later to find appropriate 5 digit chunk
 def english_morse(morse_code):
     words = morse_code.split(' / ')
     translated_chars = []
@@ -63,7 +65,7 @@ time_identifier(translation)
 #wind speed
 def wind_speed(input_string): #fix
     chunk = translation[17]
-    print("Wind speed identifier: " + chunk)
+    print("Wind speed chunk: " + chunk)
     if translation[17] == '0':
         print("fix here")
     elif translation[17] =='1':
@@ -109,7 +111,7 @@ elif value == '5':
 else:
     print("Unrecognized or invalid value")
 
-def direction_speed(input_string):
+def direction_speed(input_string): #22252
     match = re.search(r'\b222\d{2}\b', input_string)
     if match:
         direction = match.group()
@@ -240,7 +242,9 @@ visibility(translation)
 
 #Total Cloud Cover 
 #32405 
-def total_cloud_cover(input_string):  # N
+def total_cloud_cover(input_string):  
+    #Nddff
+    # N
     # capture exactly ONE digit at index 7
     match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
     cloud_digit = match.group(1)
@@ -373,8 +377,58 @@ def wind_direction(input_string):  # dd
 
 wind_direction(translation)
 
-def air_temperature(input_string):  # N
-    # capture exactly ONE digit at index 7
+#wind speed 
+
+def wind_speed(input_string):  # ff
+    
+    #match = re.search(r'\b41\d{3}\s+[0-9](\d{2})\d{2}\b', input_string)
+    match = re.search(r'\b41\d{3}\s+\d{3}(\d{2})\b', input_string)
+    speed_digit = match.group(1)
+    print(f"Wind Speed chunk: {speed_digit}")
+
+    if not match:
+        print("digit not found")
+        return
+
+    #wind_digit = match.group(1)
+
+    if speed_digit == '00': #change to degrees
+        print("Calm")
+    elif speed_digit == '00':
+        print("Mean Speed: 00, Beaufort: 0, Description: Calm")
+    elif speed_digit in ('01', '02', '03'):
+        print("Mean Speed: 02, Beaufort: 1, Description: Light Air")
+    elif speed_digit in ('04', '05', '06'):
+        print("Mean Speed: 05, Beaufort: 2, Description: Light Breeze")
+    elif speed_digit in ('07', '08', '09', '10'):
+        print("Mean Speed: 09, Beaufort: 3, Description: Gentle Breeze")
+    elif speed_digit in ('11', '12', '13', '14', '15', '16'):
+        print("Mean Speed: 13, Beaufort: 4, Description: Moderate Breeze")
+    elif speed_digit in ('17', '18', '19', '20', '21'):
+        print("Mean Speed: 19, Beaufort: 5, Description: Fresh Breeze")
+    elif speed_digit in ('22', '23', '24', '25', '26', '27'):
+        print("Mean Speed: 26, Beaufort: 6, Description: strong Breeze")
+    elif speed_digit in ('28', '29', '30', '31', '32', '33'):
+        print("Mean Speed: 30, Beaufort: 7, Description: Near Gale")
+        
+    elif speed_digit in ('34', '35', '36', '37', '38', '39', '40'):
+        print("Mean Speed: 37, Beaufort: 8, Description: Gale")
+    elif speed_digit in ('41', '42', '43', '44', '45', '46', '47'):
+        print("Mean Speed: 37, Beaufort: 8, Description: Strong Gale")
+    elif speed_digit in ('48', '49', '50', '51', '52', '53', '54', '55'):
+        print("Mean Speed: 52, Beaufort: 10, Description: Storm")
+    elif speed_digit in ('56', '57', '58', '59', '60', '61', '62', '63'):
+        print("Mean Speed: 60, Beaufort: 11, Description: Violent Storm")
+    elif int(speed_digit) > 64:
+        print("Mean Speed: -, Beaufort: 12, Description: Hurricane") 
+    else:
+        print("not found")
+
+wind_speed(translation)
+
+
+#do later
+def air_temperature(input_string):  # 
     match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
     cloud_digit = match.group(1)
   
@@ -411,5 +465,5 @@ def air_temperature(input_string):  # N
 
 total_cloud_cover(translation)
 
-test = re.search(r'')
-print(test)
+#test = re.search(r'')
+#print(test)
