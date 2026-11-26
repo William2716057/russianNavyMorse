@@ -410,7 +410,6 @@ def wind_speed(input_string):  # ff
         print("Mean Speed: 26, Beaufort: 6, Description: strong Breeze")
     elif speed_digit in ('28', '29', '30', '31', '32', '33'):
         print("Mean Speed: 30, Beaufort: 7, Description: Near Gale")
-        
     elif speed_digit in ('34', '35', '36', '37', '38', '39', '40'):
         print("Mean Speed: 37, Beaufort: 8, Description: Gale")
     elif speed_digit in ('41', '42', '43', '44', '45', '46', '47'):
@@ -427,18 +426,17 @@ def wind_speed(input_string):  # ff
 wind_speed(translation)
 
 
-#do later
-def air_temperature(input_string):  # 
+def total_cloud_cover(input_string):
+
     match = re.search(r'\b41\d{3}\s+([0-9])\d{4}\b', input_string)
-    cloud_digit = match.group(1)
-  
-    print(f"Cloud Cover: {cloud_digit}")
 
     if not match:
-        print("digit not found")
+        print("Digit not found")
         return
 
-    #cloud_digit = match.group(1)
+    cloud_digit = match.group(1)
+
+    print(f"Cloud Cover: {cloud_digit}")
 
     if cloud_digit == '0':
         print("Cloudless")
@@ -455,15 +453,13 @@ def air_temperature(input_string):  #
     elif cloud_digit == '6':
         print("6 eighths")
     elif cloud_digit == '7':
-        print("7 eighths or more but not totally covered")
+        print("7 eighths or more, but not totally covered")
     elif cloud_digit == '8':
-        print("8 eighths, sky completely covered by clouds")
+        print("8 eighths, sky completely covered")
     elif cloud_digit == '9':
         print("Sky obscured by fog, snow or other meteorological phenomena")
     else:
-        print("not found")
-
-total_cloud_cover(translation)
+        print("Not found")
 
 #test = re.search(r'')
 #print(test)
